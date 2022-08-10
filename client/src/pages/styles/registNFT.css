@@ -19,7 +19,8 @@
     padding: 10px 10px 10px 50px;
     width:50%;
     height:100%;
-    background-color: rgb(111, 3, 84);
+    background: #FFFFFF;    
+    border: 1px solid #CDD6D7;
   }
   .rright{
     width:50%;
@@ -32,28 +33,37 @@
     height: 200px;
     text-align: center;
     vertical-align: middle;
-    background-color: rgb(37, 60, 118);
+    background-color: rgb(132, 154, 209);
   }  
 .lbox2 {
     width: 90%;
     height: 50px;
-    background-color: rgb(37, 60, 118);
+    background: #FFFFFF;    
+    border: 1px solid #CDD6D7;
   }
 .lbox3 {
     width: 90%;
-    height: 50px;
+    height: 100px;   
+    background: #FFFFFF;    
+    border: 1px solid #505354;
 }
 .lbox4 {
     width: 90%;
     height: 100px;
+    background: #FFFFFF;    
+    border: 1px solid #CDD6D7;
     }
 .lbox5 {
     width: 90%;
-    height: 100px;
+    height: 50px;
+    background: #FFFFFF;    
+    border: 1px solid #CDD6D7;
     }
 .lbox6 {
     width: 90%;
-    height: 100px;
+    height: 50px;
+    background: #FFFFFF;    
+    border: 1px solid #CDD6D7;
     }
 .input1 {
     width: 99%;
@@ -67,13 +77,13 @@
     width: 270px;  
     padding: 10px 10px 10px 10px;
     box-sizing: border-box;
-    background-color: rgb(153, 130, 115);
+    background-color: rgb(255, 255, 255);
 }        
 .lbox2-1 {
     padding: 10px 10px 10px 10px;
     width: 230px;
     height: 200px;
-    background-color: rgb(232, 138, 76);
+    background-color: rgb(132, 135, 168);
 }     
 
 .button {

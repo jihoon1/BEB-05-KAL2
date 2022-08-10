@@ -16,7 +16,7 @@ function RegistNFT() {
                     <div className="contents1"><p/>Extenal Link<div className="lbox3"><input type="text" id="select" className="input1"/></div></div>
                     <div className="contents1"><p/>description<div className="lbox4"><input type="text" id="select" className="input1"/></div></div>
                     <div className="contents1"><p/>Sell Price (only eth)<div className="lbox5"><input type="text" id="select" className="input1"/></div></div>
-                    <div className="contents1"><p/>Collection (미지원)<div className="lbox6"><input type="text" id="select" className="input1"/></div></div>
+                    {/* <div className="contents1"><p/>Collection<div className="lbox6"><input type="text" id="select" className="input1"/></div></div> */}
                     <div className="contents1"><p/><div class="button"><p class="btnText">Create</p><div class="btnTwo"><p class="btnText2">now</p></div></div></div>
                 </div>
                 <div className="rright">
