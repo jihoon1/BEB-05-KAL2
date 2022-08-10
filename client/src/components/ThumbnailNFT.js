@@ -20,4 +20,12 @@ function ThumbnailNFT({ data }) {
   );
 }
 
+ThumbnailNFT.defaultProps = {
+  data: {
+    id: "",
+    category: "",
+    title: "",
+    price: "",
+  },
+};
 export default ThumbnailNFT;
