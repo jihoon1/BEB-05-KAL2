@@ -1,0 +1,137 @@
+body {
+  overflow-y: visible;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+}
+
+.home--container--wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.container--main {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.container--main--wrapper--left {
+  width: 45%;
+  background: linear-gradient(
+    90deg,
+    rgb(67, 49, 255) 0%,
+    rgb(165, 112, 234) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  padding: 5% 0 0 5%;
+}
+
+.container--main--wrapper--right {
+  width: 50%;
+  background: linear-gradient(
+    90deg,
+    rgb(165, 112, 234) 0%,
+    rgb(67, 49, 255) 100%
+  );
+  display: flex;
+  flex-direction: row;
+  padding: 5% 0 0 0;
+}
+
+.container--main--slogan {
+  font-size: 6.5rem;
+  font-weight: 700;
+  margin: 2% 0 0 0;
+  color: white;
+}
+
+.container--main--subSlogan {
+  margin: 5% 0 0 0;
+  color: white;
+}
+
+.container--main--buttons {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  margin: 5% 0 0 0;
+}
+.container--main--explore--button {
+  background-color: white;
+  width: 30%;
+  height: 35%;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.container--main--create--button {
+  width: 30%;
+  height: 35%;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: white;
+  border: 2px solid white;
+  margin: 0 0 0 5%;
+}
+
+.container--liveAuction {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: linear-gradient(90deg, azure 0%, rgb(130, 213, 228) 100%);
+  padding: 5% 0 0 5%;
+}
+
+.container--liveAuction--title {
+  width: 100%;
+  height: 10%;
+  font-size: 5.2rem;
+  font-weight: 700;
+}
+
+.container--liveAuction--cards {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 70%;
+}
+
+.container--liveAuction--viewMore--button {
+  width: 10%;
+  height: 7%;
+  margin: 3% 40%;
+  background-color: white;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  border: 1px solid #a5a5a5;
+  color: #a5a5a5;
+}
+
+.container--liveAuction--viewMore--button:hover {
+  background: rgb(255, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgb(67, 49, 255) 0%,
+    rgb(165, 112, 234) 100%
+  );
+  color: white;
+}
