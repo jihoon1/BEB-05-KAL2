@@ -74,8 +74,8 @@ function TradeNFT() {
         <div className="article">
           <FilterBar />
           <div className="contents">
-            {dummyData.map((e) => {
-              return <ThumbnailNFT data={e} />;
+            {dummyData.map((e, idx) => {
+              return <ThumbnailNFT data={e} key={idx} />;
             })}
           </div>
         </div>

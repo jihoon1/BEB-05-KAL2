@@ -4,10 +4,9 @@ import db from "./firebase";
 import { doc, getDoc, setDoc, deleteDoc } from "firebase/firestore";
 
 function App() {
-
   const DBTest = async () => {
     console.log("call DBTest");
-    
+
     //DB에 데이터 추가, 조회, 삭제
     //ADD DATA TO FIRESTORE
     await setDoc(doc(db, "user", "data"), {
@@ -21,10 +20,10 @@ function App() {
     if (docSnap.exists()) {
       console.log("Document data:", docSnap.data());
     }
-    
+
     //DElETE DATA FROM FIRESTORE
     await deleteDoc(doc(db, "user", "data"));
-  }
+  };
 
   //DBTest();  //호출 테스트
 

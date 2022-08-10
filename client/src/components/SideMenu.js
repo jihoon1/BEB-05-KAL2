@@ -32,16 +32,16 @@ function SideMenu() {
       <div className="category">
         <div className="sideMenu--title">category</div>
         <div className="category--list">
-          {categories.map((e) => {
+          {categories.map((e, idx) => {
             return (
-              <div className="category--item">
+              <div className="category--item" key={idx}>
                 <input
                   type="radio"
                   id="select"
                   name="category"
                   className="category--check"
                 />
-                <label for="category">{e}</label>
+                <label>{e}</label>
               </div>
             );
           })}
