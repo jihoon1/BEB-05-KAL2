@@ -1,0 +1,79 @@
+.NFT--card {
+  width: 28%;
+  height: 60%;
+  background-color: white;
+  margin: 5% 5% 0 0;
+  border: 1px solid gray;
+}
+
+.NFT--thumbnail--image {
+  width: 100%;
+  height: 60%;
+  background-color: gray;
+}
+
+.NFT--category {
+  width: 40%;
+  height: 8%;
+  border-radius: 50px;
+  background: rgb(255, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(255, 139, 0, 1) 100%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  position: absolute;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  top: 56%;
+  left: 54%;
+}
+
+.NFT--inform--wrapper {
+  width: 100%;
+  height: 40%;
+}
+
+.NFT--inform--profile {
+  width: 95%;
+  height: 25%;
+  margin: 7% 0 0 5%;
+  display: flex;
+}
+
+.NFT--inform--profile--image {
+  width: 15%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: gray;
+}
+
+.NFT--inform--profile--name {
+  width: 70%;
+  height: 100%;
+  margin: 0 0 0 5%;
+  display: flex;
+  align-items: center;
+}
+
+.NFT--title {
+  width: 100%;
+  font-weight: 700;
+  font-size: 1.3rem;
+  padding: 5% 0 0 5%;
+}
+
+.NFT--price {
+  width: 100%;
+  padding: 5% 0 0 5%;
+}
+
+.limit {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
