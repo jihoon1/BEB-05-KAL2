@@ -1,5 +1,5 @@
 import "./App.css";
-import TradeNFT from "./pages/tradeNFT";
+import RegistNFT from "./pages/registNFT";
 import db from "./firebase";
 import { doc, getDoc, setDoc, deleteDoc } from "firebase/firestore";
 
@@ -29,7 +29,8 @@ function App() {
 
   return (
     <div>
-      <TradeNFT />
+      <RegistNFT />
+
     </div>
   );
 }
