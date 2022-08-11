@@ -1,6 +1,7 @@
 import "./App.css";
 import TradeNFT from "./pages/tradeNFT";
 import InfoNFT from "./pages/infoNFT";
+import RegistNFT from "./pages/registNFT";
 import db from "./firebase";
 import { doc, getDoc, setDoc, deleteDoc } from "firebase/firestore";
 import Home from "./pages/home";
@@ -33,6 +34,7 @@ function App() {
   return (
     <div>
       <Login />
+      <RegistNFT />
     </div>
   );
 }
