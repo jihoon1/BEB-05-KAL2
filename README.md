@@ -13,3 +13,12 @@
 | 김지훈 | IPFS, DB           | https://github.com/jihoon1 |
 | 이효정 | FE                 | https://github.com/rootrue |
 | 이호성 | way off            | X|
+
+## 기능
+-   [x] 메타마스크를 통한 지갑 연결
+-   [ ] NFT 생성
+-   [ ] NFT 판매
+-   [ ] NFT 구매
+-   [ ] NFT 전송
+-   [ ] 판매중인 NFT 목록
+-   [ ] 판매중인 NFT 목록 필터링
