@@ -40,7 +40,7 @@ function Login() {
               }}
             >
               <div className="login--button--metamask" />
-              <span>MetaMask</span>
+              <span className="login--button--title">Connet MetaMask</span>
             </button>
           </div>
         </div>

@@ -34,7 +34,6 @@ function App() {
   return (
     <div>
       <Login />
-      <RegistNFT />
     </div>
   );
 }
