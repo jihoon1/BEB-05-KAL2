@@ -1,7 +1,10 @@
 import "./App.css";
 import TradeNFT from "./pages/tradeNFT";
+import InfoNFT from "./pages/infoNFT";
 import db from "./firebase";
 import { doc, getDoc, setDoc, deleteDoc } from "firebase/firestore";
+import Home from "./pages/home";
+import Login from "./pages/login";
 
 function App() {
   const DBTest = async () => {
@@ -29,7 +32,7 @@ function App() {
 
   return (
     <div>
-      <TradeNFT />
+      <Login />
     </div>
   );
 }
