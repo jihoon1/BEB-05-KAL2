@@ -6,6 +6,8 @@ import db from "./firebase";
 import { doc, getDoc, setDoc, deleteDoc } from "firebase/firestore";
 import Home from "./pages/home";
 import Login from "./pages/login";
+import React from "react";
+import NavBar from "./components/NavBar";
 
 function App() {
   const DBTest = async () => {
@@ -34,6 +36,9 @@ function App() {
   return (
     <div>
       <Login />
+    <React.Fragment>
+      <NavBar />
+    </React.Fragment>
     </div>
   );
 }
