@@ -1,4 +1,4 @@
-# BEB-05-KAL2 🛩🛩
+# 🛩🛩 BEB-05-KAL2
 
 ### BEB 05기 첫 프로젝트의 4팀인 BEB-05-KAL2 팀입니다.
 ### NFT 마켓 중 가장 큰 프로젝트인 OpenSea를 클론 코딩하는 프로젝트를 진행중입니다.
@@ -14,7 +14,7 @@
 | 이효정 | FE                 | https://github.com/rootrue |
 | 이호성 | way off            | X|
 
-## 기능
+## 🛠 기능
 -   [x] 메타마스크를 통한 지갑 연결
 -   [ ] NFT 생성
 -   [ ] NFT 판매
