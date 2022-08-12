@@ -65,12 +65,25 @@ const dummyData = [
     price: `0.5ETH`,
   },
 ];
-function TradeNFT() {
+function TradeNFT({
+  category,
+  minPrice,
+  maxPrice,
+  status,
+  setCategory,
+  setMinPrice,
+  setMaxPrice,
+  setStatus,
+}) {
   return (
     <div>
-      <div className="tempNav"></div>
       <div className="wrapper">
-        <SideMenu />
+        <SideMenu
+          setCategory={setCategory}
+          setMinPrice={setMinPrice}
+          setMaxPrice={setMaxPrice}
+          setStatus={setStatus}
+        />
         <div className="article">
           <FilterBar />
           <div className="contents">

@@ -1,11 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Web3 from "web3";
 import "./styles/login.css";
 
-function Login() {
+function Login({ address, setAddress }) {
   const [web3, setWeb3] = useState("");
-  const [account, setAccount] = useState("");
+
+  let navigate = useNavigate();
 
   useEffect(() => {
     if (typeof window.ethereum !== "undefined") {
@@ -23,7 +25,10 @@ function Login() {
     const accounts = await window.ethereum.request({
       method: "eth_requestAccounts",
     });
-    setAccount(accounts[0]);
+    if (address !== "" || address === undefined) {
+      navigate("/");
+    }
+    setAddress(accounts[0]);
   };
 
   return (

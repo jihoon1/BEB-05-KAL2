@@ -1,3 +1,7 @@
+.container--main--buttons a {
+  text-decoration: none;
+}
+
 body {
   overflow-y: visible;
   overflow-x: hidden;
@@ -68,12 +72,22 @@ body {
   background-color: white;
   width: 30%;
   height: 35%;
+  color: black;
   border-radius: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.6rem;
   font-weight: 600;
+}
+
+.container--main--explore--button:hover {
+  background: linear-gradient(
+    90deg,
+    rgb(67, 49, 255) 0%,
+    rgb(165, 112, 234) 100%
+  );
+  color: white;
 }
 
 .container--main--create--button {
@@ -88,6 +102,11 @@ body {
   color: white;
   border: 2px solid white;
   margin: 0 0 0 5%;
+}
+
+.container--main--create--button:hover {
+  background-color: white;
+  color: black;
 }
 
 .container--liveAuction {
@@ -124,10 +143,10 @@ body {
   font-size: 1.1rem;
   border: 1px solid #a5a5a5;
   color: #a5a5a5;
+  text-decoration: none;
 }
 
 .container--liveAuction--viewMore--button:hover {
-  background: rgb(255, 0, 0);
   background: linear-gradient(
     90deg,
     rgb(67, 49, 255) 0%,

@@ -6,8 +6,10 @@ import db from "./firebase";
 import { doc, getDoc, setDoc, deleteDoc } from "firebase/firestore";
 import Home from "./pages/home";
 import Login from "./pages/login";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "./components/NavBar";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import MyNFT from "./pages/myNFT";
 
 function App() {
   const DBTest = async () => {
@@ -31,14 +33,46 @@ function App() {
     await deleteDoc(doc(db, "user", "data"));
   };
 
-  //DBTest();  //호출 테스트
+  //DBTest();  /  /호출 테스트
+
+  // ---------------------------------------------------- //
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(99999999999999);
+  const [status, setStatus] = useState("");
+  const [category, setCategory] = useState("all");
+  const [address, setAddress] = useState("");
+
+  useEffect(() => {}, []);
 
   return (
     <div>
-      <Login />
-    <React.Fragment>
-      <NavBar />
-    </React.Fragment>
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route exact path="/" element={<Home address={address} />} />
+          <Route
+            path="/explore"
+            element={
+              <TradeNFT
+                setCategory={setCategory}
+                setMinPrice={setMinPrice}
+                setMaxPrice={setMaxPrice}
+                setStatus={setStatus}
+                category={category}
+                minPrice={minPrice}
+                maxPrice={maxPrice}
+                status={status}
+              />
+            }
+          />
+          <Route path="/myNFT" element={<MyNFT address={address} />} />
+          <Route
+            path="/login"
+            element={<Login address={address} setAddress={setAddress} />}
+          />
+          <Route path="/regist" element={<RegistNFT />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
