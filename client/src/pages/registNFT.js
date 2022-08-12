@@ -1,8 +1,21 @@
 import { useState } from "react";
 import "./styles/registNFT.css";
 import SideMenu from "../components/SideMenu";
-import { flushSync } from "react-dom";
 import { pinataUpload, pinataUploadJSON } from "../ipfs";
+import db from "../firebase";
+import { doc,setDoc } from "firebase/firestore";
+
+const categories = [
+  "ALL",
+  "illustration",
+  "Art",
+  "Domain Names",
+  "Trading Cards",
+  "Collectibles",
+];
+const status = [
+  "NEW",
+];
 
 function RegistNFT() {
   const [dataObj, setInput] = useState({
@@ -11,9 +24,12 @@ function RegistNFT() {
     ExLink: "",
     NFTDesc: "",
     SellPrice: "",
+    Category: "",
+    Status: "",
   });
 
   const onChange = (e) => {
+    console.log(e.target.name, e.target.value);
     setInput({
       ...dataObj,
       [e.target.name]: e.target.value,
@@ -30,8 +46,24 @@ function RegistNFT() {
       NFTUrl: upLoadIPFSUrl,
     };
 
-    const upLoadIPFSMetaDataUrl = await pinataUploadJSON(metaDataJson);
-    console.log(upLoadIPFSMetaDataUrl); // 이 메타데이터 주소값이 DB 유저 데이터로 들어가야함.
+    const pinata_gwUrl = 'https://gateway.pinata.cloud/ipfs/';
+    const upLoadIPFSMetaDataHash = await pinataUploadJSON(metaDataJson);
+    console.log(pinata_gwUrl+upLoadIPFSMetaDataHash); // JSON 파일 경로
+
+    //ADD DATA TO FIRESTORE
+      const docData = {      
+          name: dataObj.NFTName,
+          description: dataObj.NFTDesc,
+          price: dataObj.SellPrice,
+          NFTUrl: upLoadIPFSUrl,
+          MetaDataUrl : pinata_gwUrl+upLoadIPFSMetaDataHash,
+          category : dataObj.Category,
+          status : 0
+        
+      };
+
+    await setDoc(doc(db, "user", "0xbcC230bEC953aF066d730F5325F0f5EE21Cb8911","NFT",upLoadIPFSMetaDataHash), docData);
+    
   };
 
   const onLoadFile = (e) => {
@@ -90,15 +122,23 @@ function RegistNFT() {
               </div>
               <div className="contents1">
                 <p />
-                Extenal Link
-                <div className="lbox3">
-                  <input
-                    type="text"
-                    readOnly
-                    value="defult"
-                    name="ExLink"
-                    className="input1"
-                  />
+                Category
+                <div className="">
+                  {categories.map((e, idx) => {
+                    return (
+                      <div className="category--item" key={idx}>
+                        <input
+                          type="radio"
+                          id="select"
+                          name="category"
+                          className="category--check"
+                          onChange={onChange}
+                          value={idx}
+                        />
+                        <label>{e}</label>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
               <div className="contents1">

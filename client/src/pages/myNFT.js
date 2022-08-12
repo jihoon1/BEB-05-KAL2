@@ -1,7 +1,57 @@
 import "./styles/myNFT.css";
+import SideMenu from "../components/SideMenu";
+import FilterBar from "../components/FilterBar";
+import ThumbnailNFT from "../components/ThumbnailNFT";
+import db from "../firebase";
+import { getDocs, collection} from "firebase/firestore";
+import { useEffect } from "react";
+
 function MyNFT({ address }) {
-  console.log(address);
-  return <div className="test--page">{address}</div>;
+  const myNftData = [];
+  console.log('addr',address);
+
+  useEffect(() => {
+    getMyNFT();
+  }, []);
+  
+  const getMyNFT = async (address) => {
+    if(address === undefined)
+      return;
+
+    //GET DATA FROM FIRESTORE
+    const docRef = collection(db, "user",address,"NFT");
+    const docSnap = await getDocs(docRef);
+    docSnap.forEach((doc) => {    
+      //console.log(doc.id, " => ", doc.data());
+      const data ={
+        id: myNftData.length,
+        img: doc.data().NFTUrl,
+        category: doc.data().category,
+        desc: doc.data().description,
+        userName: doc.data().name,
+        createdAt: Date.now(),
+        title: doc.data().name,
+        price: doc.data().price,
+      };
+      myNftData.push(data);
+    });
+    console.log('myNftData',myNftData);
+  }
+
+  return (<div>
+    <div className="wrapper">
+      <SideMenu/>
+      <div className="article">
+        <FilterBar />
+        <div className="contents">
+          {myNftData.map((e, idx) => {
+            return <ThumbnailNFT data={e} key={idx} />;
+          })}
+        </div>
+      </div>
+    </div>
+  </div>);
+>>>>>>> d5af117d40dc18efbacc01569f2cea02ef0b89e2
 }
 
 export default MyNFT;
