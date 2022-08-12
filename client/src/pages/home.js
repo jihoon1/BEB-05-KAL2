@@ -20,7 +20,7 @@ const card = [
 function Home({ address }) {
   useEffect(() => {}, []);
   return (
-    <div className="container">
+    <>
       <div className="home--container--wrapper">
         <div className="container--main">
           <div className="container--main--wrapper--left">
@@ -45,6 +45,8 @@ function Home({ address }) {
             })}
           </div>
         </div>
+      </div>
+      <div className="home--container--wrapper">
         <div className="container--liveAuction">
           <div className="container--liveAuction--title">Live Auctions</div>
           <div className="container--liveAuction--cards">
@@ -63,7 +65,7 @@ function Home({ address }) {
           </Link>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
