@@ -9,18 +9,19 @@ body {
 
 .container {
   width: 100%;
-  height: 100vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .home--container--wrapper {
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 .container--main {
   width: 100%;
   height: 100%;
-  position: relative;
   display: flex;
   flex-direction: row;
 }
@@ -111,8 +112,7 @@ body {
 
 .container--liveAuction {
   width: 100%;
-  height: 100%;
-  position: relative;
+  height: 95%;
   background: linear-gradient(90deg, azure 0%, rgb(130, 213, 228) 100%);
   padding: 5% 0 0 5%;
 }
