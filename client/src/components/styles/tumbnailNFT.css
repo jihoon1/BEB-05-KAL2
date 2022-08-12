@@ -47,7 +47,10 @@
   width: 15%;
   height: 100%;
   border-radius: 50%;
-  background-color: gray;
+  background-image: url(../../assets/default-profile.webp);
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: 1px solid #c5c5c5;
 }
 
 .NFT--inform--profile--name {

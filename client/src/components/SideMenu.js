@@ -8,7 +8,11 @@ const categories = [
   "Trading Cards",
   "Collectibles",
 ];
-function SideMenu() {
+
+function SideMenu({ setCategory, setMinPrice, setMaxPrice, setStatus }) {
+  const setCate = (e) => {
+    setCategory(e.target.value);
+  };
   return (
     <div className="sideMenu">
       <div className="filter">
@@ -23,7 +27,7 @@ function SideMenu() {
       </div>
       <div className="price">
         <div className="sideMenu--title">Price</div>
-        <div className="currency">$USD</div>
+        <div className="currency">ETH</div>
         <div className="priceRange">
           <input type="text" placeholder="min" className="input--price"></input>
           <input type="text" placeholder="max" className="input--price"></input>
@@ -41,6 +45,10 @@ function SideMenu() {
                   id="select"
                   name="category"
                   className="category--check"
+                  value={e}
+                  onClick={(el) => {
+                    return setCate(el);
+                  }}
                 />
                 <label>{e}</label>
               </div>
