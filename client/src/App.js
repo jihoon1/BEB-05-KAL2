@@ -10,6 +10,8 @@ import React, { useEffect, useState } from "react";
 import NavBar from "./components/NavBar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MyNFT from "./pages/myNFT";
+import Footer from "./components/Footer";
+import "mdb-react-ui-kit/dist/css/mdb.min.css";
 
 function App() {
   const DBTest = async () => {
@@ -72,6 +74,7 @@ function App() {
           />
           <Route path="/regist" element={<RegistNFT />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );
