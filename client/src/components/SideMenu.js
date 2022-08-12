@@ -1,6 +1,7 @@
 import "./styles/sideMenu.css";
 
 const categories = [
+  "ALL",
   "illustration",
   "Art",
   "Domain Names",

@@ -1,8 +1,8 @@
 import { useRef } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
 import "./styles/navBar.css";
-import { TbShip } from "react-icons/tb";
+import { AiOutlineSearch } from "react-icons/ai";
 import { RiWallet3Line } from "react-icons/ri";
+import { Link } from "react-router-dom";
 import { BsPersonCircle } from "react-icons/bs";
 
 function NavBar() {
@@ -14,36 +14,30 @@ function NavBar() {
 
   return (
     <header>
-      <div>
-        <TbShip />
+      <Link to="/" className="navBar--logo">
+        🛩 KAL2
+      </Link>
+      <div className="navBar--search--wrapper">
+        <input
+          type="text"
+          size="50"
+          placeholder="Search items"
+          className="navBar--search--input"
+        />
+        <div className="search--icon">
+          <AiOutlineSearch />
+        </div>
       </div>
-      <h2>Opensea</h2>
-      <input
-        typ="text"
-        size="50"
-        laceholder="Search items, collections, and accounts"
-      />
-
-      <nav ref={navRef}>
-        <a href="/#">Explore</a>
-        <a href="/#">Stats</a>
-        <a href="/#">Resoures</a>
-        <a href="/#">Create</a>
-        <a>
+      <nav className="navBar--link--wrapper" ref={navRef}>
+        <Link to="/explore">Explore</Link>
+        <Link to="/regist">Regist</Link>
+        <Link to="/login">
           <BsPersonCircle />
-        </a>
-        <a>
+        </Link>
+        <Link to="/myNFT">
           <RiWallet3Line />
-        </a>
-
-        <button ClassName="nav-btn nav-close-btn" onClick={showNavbar}>
-          <FaTimes />
-        </button>
+        </Link>
       </nav>
-
-      <button ClassName="nav-btn" onClick={showNavbar}>
-        <FaBars />
-      </button>
     </header>
   );
 }

@@ -1,5 +1,7 @@
 import "./styles/home.css";
 import ThumbnailNFT from "../components/ThumbnailNFT";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const card = [
   {
@@ -15,7 +17,8 @@ const card = [
     price: "999 ETH",
   },
 ];
-function Home() {
+function Home({ address }) {
+  useEffect(() => {}, []);
   return (
     <div className="container">
       <div className="home--container--wrapper">
@@ -28,8 +31,12 @@ function Home() {
               KAL2 is best NFT MarketPlace
             </div>
             <div className="container--main--buttons">
-              <div className="container--main--explore--button">Explore</div>
-              <div className="container--main--create--button">Create</div>
+              <Link className="container--main--explore--button" to="/explore">
+                Explore
+              </Link>
+              <Link className="container--main--create--button" to="/regist">
+                Create
+              </Link>
             </div>
           </div>
           <div className="container--main--wrapper--right">
@@ -48,9 +55,12 @@ function Home() {
               return <ThumbnailNFT data={e} key={idx} />;
             })}
           </div>
-          <div className="container--liveAuction--viewMore--button">
+          <Link
+            to="/explore"
+            className="container--liveAuction--viewMore--button"
+          >
             View More
-          </div>
+          </Link>
         </div>
       </div>
     </div>

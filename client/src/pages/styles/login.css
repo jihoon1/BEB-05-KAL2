@@ -59,11 +59,13 @@
 .login--button:hover {
   background: rgb(255, 191, 102);
   color: white;
+  cursor: pointer;
 }
 
 .login--button--metamask {
   width: 20%;
   height: 80%;
+  margin: 0 0 0 5%;
   background-image: url(../../assets/metamask.png);
   background-repeat: no-repeat;
   background-size: contain;

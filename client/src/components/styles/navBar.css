@@ -1,85 +1,139 @@
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,300&display=swap");
 
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: borader-box;
-    font-family: 'Titillium Web', sans-serif;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: borader-box;
+  font-family: "Titillium Web", sans-serif;
 }
 
-:root{
-    --mainColor: #0100FF;
-    --mainColorLight: #5767aa;
-    --secondaryColor: #E6FFFF;
-    --textColor: #eee;
+:root {
+  --mainColor: #0100ff;
+  --mainColorLight: #5767aa;
+  --secondaryColor: #e6ffff;
+  --textColor: #eee;
 }
 
 header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 80px;
-    padding: 0 2rem;
-    background-color: var(--mainColor);
-    color: var(--textColor);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  padding: 0 2rem;
+  background-color: rgba(35, 90, 255, 0.7);
+  color: var(--textColor);
+  position: fixed;
+  top: 0;
+  z-index: 1;
 }
 
-nav a{
-    margin: 0 2rem;
-    color: var(--textColor);
-    text-decoration: none; 
+nav a {
+  margin: 0 2rem;
+  color: var(--textColor);
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: 600;
 }
 
-nav a:hover{
-    color: var(--secondaryColor);
+nav a:hover {
+  color: var(--secondaryColor);
 }
 
 header .nav-btn {
-    padding: 5px;
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: var(--textColor);
-    visibility: hidden;
-    opacity: 0;
-    font-size: 1.8rem;
+  padding: 5px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--textColor);
+  visibility: hidden;
+  opacity: 0;
+  font-size: 1.8rem;
 }
 
-@media only screen and (max-width: 1024px){
-    header .nav-btn {
-        visibility: visible;
-        opacity:1;
-    }
+.navBar--logo {
+  font-size: 2.2rem;
+  margin: 0 0 0 5%;
+  font-weight: 700;
+  color: var(--textColor);
+  text-decoration: none;
+}
 
-    header nav{
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 1.5rem;
-        background-color: var(--mainColor);
-        transition: 1s;
-        transform: translateY(-100vh);
-    }
+.navBar--search--wrapper {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    header .responsive_nav{
-        transform: none;
-    }
+.navBar--search--input {
+  text-indent: 5px;
+  height: 50%;
+  width: 30%;
+  text-align: right;
+  background-color: transparent;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid white;
+  color: white;
+  font-size: 1.2rem;
+}
 
-    nav .nav-close-btn{
-        position: absolute;
-        top: 2rem;
-        right: 2rem;
-    }
+.search--icon {
+  width: 5%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    nav a{
-        font-size: 1.5rem;
-    }
-    
+.navBar--search--input::placeholder {
+  color: white;
+}
+
+@media only screen and (max-width: 1024px) {
+  header .nav-btn {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  header nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    background-color: var(--mainColor);
+    transition: 1s;
+    transform: translateY(-100vh);
+  }
+
+  header .responsive_nav {
+    transform: none;
+  }
+
+  nav .nav-close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
+
+  nav a {
+    font-size: 1.5rem;
+  }
+}
+
+.navBar--link--wrapper {
+  width: 35%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: right;
 }
