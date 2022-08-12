@@ -4,22 +4,22 @@ import FilterBar from "../components/FilterBar";
 import ThumbnailNFT from "../components/ThumbnailNFT";
 import db from "../firebase";
 import { getDocs, collection} from "firebase/firestore";
-import { useEffect } from "react";
+import { useEffect , useState } from "react";
 
 function MyNFT({ address }) {
-  const myNftData = [];
   console.log('addr',address);
-
+  
+  const [myNftData, setMyNft] = useState([]);
   useEffect(() => {
     getMyNFT();
   }, []);
-  
-  const getMyNFT = async (address) => {
-    if(address === undefined)
-      return;
 
+  const getMyNFT = async (address) => {
+    let addr = address;
+    if(address === undefined)
+      addr = "0xbcC230bEC953aF066d730F5325F0f5EE21Cb8911";
     //GET DATA FROM FIRESTORE
-    const docRef = collection(db, "user",address,"NFT");
+    const docRef = collection(db, "user",addr,"NFT");
     const docSnap = await getDocs(docRef);
     docSnap.forEach((doc) => {    
       //console.log(doc.id, " => ", doc.data());
@@ -33,20 +33,23 @@ function MyNFT({ address }) {
         title: doc.data().name,
         price: doc.data().price,
       };
-      myNftData.push(data);
+      setMyNft(myNftData => [...myNftData, data]);
+      //myNftData.push(data);
     });
     console.log('myNftData',myNftData);
   }
 
   return (<div>
-    <div className="wrapper">
+    <div className="wrapper">      
       <SideMenu/>
       <div className="article">
         <FilterBar />
         <div className="contents">
-          {myNftData.map((e, idx) => {
-            return <ThumbnailNFT data={e} key={idx} />;
-          })}
+          {(myNftData.length > 0)?
+              myNftData.map((e, idx) => {
+              return <ThumbnailNFT data={e} key={idx} />;           
+          }):<h>보유중인 NFT가 없습니다.</h>
+          }
         </div>
       </div>
     </div>
