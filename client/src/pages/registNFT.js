@@ -35,7 +35,7 @@ function RegistNFT() {
   };
 
   const createMetaData = async () => {
-    const upLoadIPFSUrl = await pinataUpload(dataObj.nftFile);
+    const upLoadIPFSUrl = await pinataUpload(dataObj.NFTFile);
     dataObj.ExLink = upLoadIPFSUrl;
     const metaDataJson = {
       name: dataObj.NFTName,
@@ -76,6 +76,7 @@ function RegistNFT() {
       ...dataObj,
       [e.target.name]: e.target.files[0],
     });
+    console.log(e.target.name, e.target.files[0]);
   };
 
   const onSubmit = async (e) => {
