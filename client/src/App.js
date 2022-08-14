@@ -15,7 +15,7 @@ function App() {
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(99999999999999);
   const [status, setStatus] = useState("");
-  const [category, setCategory] = useState("all");
+  const [category, setCategory] = useState("ALL");
   const [address, setAddress] = useState("");
 
   useEffect(() => {}, []);

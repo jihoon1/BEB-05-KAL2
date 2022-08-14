@@ -6,12 +6,14 @@ import { useEffect } from "react";
 const card = [
   {
     id: 1,
+    userName: "cat",
     category: "Airplane",
     title: "KAL2",
     price: "999 ETH",
   },
   {
     id: 2,
+    userName: "dog",
     category: "Art",
     title: "CodeStates",
     price: "999 ETH",

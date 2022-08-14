@@ -1,11 +1,9 @@
 import "./styles/filterBar.css";
 
-let count = 0;
-
-function FilterBar() {
+function FilterBar({ listCount }) {
   return (
     <div className="filterBar">
-      <div className="filterBar--count">{count} results</div>
+      <div className="filterBar--count">{listCount} results</div>
       <div className="filterBar--sortBy">Sort By</div>
     </div>
   );

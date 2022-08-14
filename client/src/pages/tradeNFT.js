@@ -2,6 +2,7 @@ import "./styles/tradeNFT.css";
 import SideMenu from "../components/SideMenu";
 import FilterBar from "../components/FilterBar";
 import ThumbnailNFT from "../components/ThumbnailNFT";
+import { useEffect, useState } from "react";
 
 const dummyData = [
   {
@@ -12,7 +13,7 @@ const dummyData = [
     userName: "HongGilDong",
     createdAt: Date.now(),
     title: "test",
-    price: `0.5ETH`,
+    price: `0.5`,
   },
   {
     id: 2,
@@ -22,7 +23,7 @@ const dummyData = [
     userName: "HongGilDong",
     createdAt: Date.now(),
     title: "test",
-    price: `0.5ETH`,
+    price: `0.5`,
   },
   {
     id: 3,
@@ -32,7 +33,7 @@ const dummyData = [
     userName: "HongGilDong",
     createdAt: Date.now(),
     title: "test",
-    price: `0.5ETH`,
+    price: `0.5`,
   },
   {
     id: 4,
@@ -42,7 +43,7 @@ const dummyData = [
     userName: "HongGilDong",
     createdAt: Date.now(),
     title: "test",
-    price: `0.5ETH`,
+    price: `0.5`,
   },
   {
     id: 5,
@@ -52,7 +53,7 @@ const dummyData = [
     userName: "HongGilDong",
     createdAt: Date.now(),
     title: "test",
-    price: `0.5ETH`,
+    price: `0.5`,
   },
   {
     id: 6,
@@ -62,7 +63,16 @@ const dummyData = [
     userName: "HongGilDong",
     createdAt: Date.now(),
     title: "test",
-    price: `0.5ETH`,
+    price: `0.5`,
+  },
+  {
+    id: 7,
+    img: null,
+    category: "collectible",
+    profileImg: null,
+    username: "Kim",
+    title: "test",
+    price: `0.5`,
   },
 ];
 function TradeNFT({
@@ -75,19 +85,37 @@ function TradeNFT({
   setMaxPrice,
   setStatus,
 }) {
+  useEffect(() => {
+    filtering();
+  });
+  const originalNftList = dummyData.map((e) => e);
+
+  const [nftList, setNftList] = useState(dummyData);
+
+  const filtering = () => {
+    if (category == "ALL") {
+      setNftList(originalNftList);
+    } else {
+      const tempArr = originalNftList.filter((e) => {
+        return e.category == category;
+      });
+      setNftList(tempArr);
+    }
+  };
   return (
     <div>
       <div className="wrapper">
         <SideMenu
+          category={category}
           setCategory={setCategory}
           setMinPrice={setMinPrice}
           setMaxPrice={setMaxPrice}
           setStatus={setStatus}
         />
         <div className="article">
-          <FilterBar />
+          <FilterBar listCount={nftList.length} />
           <div className="contents">
-            {dummyData.map((e, idx) => {
+            {nftList.map((e, idx) => {
               return <ThumbnailNFT data={e} key={idx} />;
             })}
           </div>
