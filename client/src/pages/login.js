@@ -21,6 +21,8 @@ function Login({ address, setAddress }) {
     }
   }, []);
 
+  useEffect(() => {});
+
   const connectWallet = async () => {
     const accounts = await window.ethereum.request({
       method: "eth_requestAccounts",

@@ -10,6 +10,7 @@ const card = [
     category: "Airplane",
     title: "KAL2",
     price: "999 ETH",
+    img: "",
   },
   {
     id: 2,
@@ -17,6 +18,7 @@ const card = [
     category: "Art",
     title: "CodeStates",
     price: "999 ETH",
+    img: "",
   },
 ];
 function Home({ address }) {

@@ -3,19 +3,16 @@ import "./styles/registNFT.css";
 import SideMenu from "../components/SideMenu";
 import { pinataUpload, pinataUploadJSON } from "../ipfs";
 import db from "../firebase";
-import { doc,setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 
 const categories = [
-  "ALL",
   "illustration",
   "Art",
   "Domain Names",
   "Trading Cards",
   "Collectibles",
 ];
-const status = [
-  "NEW",
-];
+const status = ["NEW", "On Auction"];
 
 function RegistNFT() {
   const [dataObj, setInput] = useState({
@@ -46,24 +43,31 @@ function RegistNFT() {
       NFTUrl: upLoadIPFSUrl,
     };
 
-    const pinata_gwUrl = 'https://gateway.pinata.cloud/ipfs/';
+    const pinata_gwUrl = "https://gateway.pinata.cloud/ipfs/";
     const upLoadIPFSMetaDataHash = await pinataUploadJSON(metaDataJson);
-    console.log(pinata_gwUrl+upLoadIPFSMetaDataHash); // JSON 파일 경로
+    console.log(pinata_gwUrl + upLoadIPFSMetaDataHash); // JSON 파일 경로
 
     //ADD DATA TO FIRESTORE
-      const docData = {      
-          name: dataObj.NFTName,
-          description: dataObj.NFTDesc,
-          price: dataObj.SellPrice,
-          NFTUrl: upLoadIPFSUrl,
-          MetaDataUrl : pinata_gwUrl+upLoadIPFSMetaDataHash,
-          category : dataObj.Category,
-          status : 0
-        
-      };
+    const docData = {
+      name: dataObj.NFTName,
+      description: dataObj.NFTDesc,
+      price: dataObj.SellPrice,
+      NFTUrl: upLoadIPFSUrl,
+      MetaDataUrl: pinata_gwUrl + upLoadIPFSMetaDataHash,
+      category: dataObj.Category,
+      status: 0,
+    };
 
-    await setDoc(doc(db, "user", "0xbcC230bEC953aF066d730F5325F0f5EE21Cb8911","NFT",upLoadIPFSMetaDataHash), docData);
-    
+    await setDoc(
+      doc(
+        db,
+        "user",
+        "0xbcC230bEC953aF066d730F5325F0f5EE21Cb8911",
+        "NFT",
+        upLoadIPFSMetaDataHash
+      ),
+      docData
+    );
   };
 
   const onLoadFile = (e) => {
@@ -92,7 +96,6 @@ function RegistNFT() {
   return (
     <div>
       <div className="wrapper">
-        <SideMenu />
         <div className="article">
           <h1>Regist NFT</h1>
           <div className="contents">
@@ -134,7 +137,7 @@ function RegistNFT() {
                           name="category"
                           className="category--check"
                           onChange={onChange}
-                          value={idx}
+                          value={e}
                         />
                         <label>{e}</label>
                       </div>

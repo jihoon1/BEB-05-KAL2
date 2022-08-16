@@ -9,9 +9,23 @@ const categories = [
   "Collectibles",
 ];
 
-function SideMenu({ setCategory, setMinPrice, setMaxPrice, setStatus }) {
+function SideMenu({
+  filtering,
+  setCategory,
+  setMinPrice,
+  setMaxPrice,
+  setStatus,
+}) {
   const setCate = (e) => {
-    setCategory(e.target.value);
+    return setCategory(e.target.value);
+  };
+
+  const setMin = (e) => {
+    return setMinPrice(e.target.value);
+  };
+
+  const setMax = (e) => {
+    return setMinPrice(e.target.value);
   };
   return (
     <div className="sideMenu">
@@ -29,8 +43,22 @@ function SideMenu({ setCategory, setMinPrice, setMaxPrice, setStatus }) {
         <div className="sideMenu--title">Price</div>
         <div className="currency">ETH</div>
         <div className="priceRange">
-          <input type="text" placeholder="min" className="input--price"></input>
-          <input type="text" placeholder="max" className="input--price"></input>
+          <input
+            type="text"
+            placeholder="min"
+            className="input--price"
+            onChange={(el) => {
+              return setMin(el);
+            }}
+          ></input>
+          <input
+            type="text"
+            placeholder="max"
+            className="input--price"
+            onChange={(el) => {
+              return setMax(el);
+            }}
+          ></input>
         </div>
         <div className="applyButton">Apply</div>
       </div>
