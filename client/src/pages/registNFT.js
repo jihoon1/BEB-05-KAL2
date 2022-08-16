@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles/registNFT.css";
 import SideMenu from "../components/SideMenu";
 import { pinataUpload, pinataUploadJSON } from "../ipfs";
 import db from "../firebase";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDocs, collection } from "firebase/firestore";
 const { LazyMinter } = require("../contracts/NFTMint");
 
 const categories = [
@@ -14,8 +14,18 @@ const categories = [
   "Trading Cards",
   "Collectibles",
 ];
-
 function RegistNFT({ address }) {
+  let count = 0;
+  useEffect(() => {
+    getNFTSellList();
+  }, []);
+
+  const getNFTSellList = async () => {
+    const docRef = collection(db, "NFT");
+    const docSnap = await getDocs(docRef);
+    count = docSnap.size;
+  };
+
   console.log("addr", address);
   if (address === undefined)
     address = "0xbcC230bEC953aF066d730F5325F0f5EE21Cb8911";
@@ -105,7 +115,7 @@ function RegistNFT({ address }) {
     ) {
       createMetaData();
       //createVoucher 첫번 째 인자에 NFT 배열 데이터의 길이가 필요할 듯,
-      // contract.createVoucher("tokenId", dataObj.ExLink, dataObj.SellPrice);
+      contract.createVoucher(count + 1, dataObj.ExLink, dataObj.SellPrice);
     } else {
       if (dataObj.NFTFile) console.log("Please fill all the fields");
       else console.log("Please upload a file");
