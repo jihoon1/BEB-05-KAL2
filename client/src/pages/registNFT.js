@@ -4,7 +4,6 @@ import SideMenu from "../components/SideMenu";
 import { pinataUpload, pinataUploadJSON } from "../ipfs";
 import db from "../firebase";
 import { doc, setDoc } from "firebase/firestore";
-import erc721Abi from "../contracts/abi";
 const { LazyMinter } = require("../contracts/NFTMint");
 
 const categories = [
@@ -15,7 +14,6 @@ const categories = [
   "Trading Cards",
   "Collectibles",
 ];
-const status = ["NEW"];
 
 function RegistNFT({ address }) {
   console.log("addr", address);
@@ -107,7 +105,7 @@ function RegistNFT({ address }) {
     ) {
       createMetaData();
       //createVoucher 첫번 째 인자에 NFT 배열 데이터의 길이가 필요할 듯,
-      contract.createVoucher("tokenId", dataObj.ExLink, dataObj.SellPrice);
+      // contract.createVoucher("tokenId", dataObj.ExLink, dataObj.SellPrice);
     } else {
       if (dataObj.NFTFile) console.log("Please fill all the fields");
       else console.log("Please upload a file");
@@ -181,7 +179,7 @@ function RegistNFT({ address }) {
                           name="Category"
                           className="category--check"
                           onChange={onChange}
-                          value={idx}
+                          value={e}
                         />
                         <label>{e}</label>
                       </div>
