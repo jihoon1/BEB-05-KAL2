@@ -25,7 +25,7 @@ function MyNFT({ address }) {
       //console.log(doc.id, " => ", doc.data());
       const data = {
         id: myNftData.length,
-        img: doc.data().NFTUrl,
+        image: doc.data().NFTUrl,
         category: doc.data().category,
         desc: doc.data().description,
         userName: doc.data().name,

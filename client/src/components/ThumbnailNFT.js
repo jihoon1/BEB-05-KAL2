@@ -9,7 +9,7 @@ function ThumbnailNFT({ data }) {
         <div className="NFT--category">{data.category}</div>
         <img
           className="NFT--thumbnail--image"
-          src={data.img || defaultNFT}
+          src={data.image || defaultNFT}
           alt="profile"
         ></img>
         <div className="NFT--inform--wrapper">

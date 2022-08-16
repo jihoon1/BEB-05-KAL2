@@ -46,7 +46,7 @@ function App() {
               path="/login"
               element={<Login address={address} setAddress={setAddress} />}
             />
-            <Route path="/regist" element={<RegistNFT />} />
+            <Route path="/regist" element={<RegistNFT address={address} />} />
             <Route path="/test" element={<Test />} />
           </Routes>
         </BrowserRouter>
