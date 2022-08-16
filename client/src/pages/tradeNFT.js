@@ -19,35 +19,33 @@ function TradeNFT({
   useEffect(() => {
     getNFTSellList();
     filtering();
-  },[]);
+  }, []);
 
   useEffect(() => {
     filtering();
-  },[category]);
-  const originalNftList = []; //dummyData.map((e) => e);
+  }, [category]);
 
+  const [originalNftList, setoriginalNftList] = useState([]);
   const [nftList, setNftList] = useState([]);
 
   const filtering = () => {
-    console.log("filtering",category);
+    console.log(originalNftList);
     if (category === "ALL") {
       setNftList(originalNftList);
     } else {
       const tempArr = originalNftList.filter((e) => {
-        console.log(e.category, category);
-        return SideMenu.categories[e.category] === category;
+        return e.category === category;
       });
       setNftList(tempArr);
     }
-    console.log('callfilter',nftList);
   };
-
 
   const getNFTSellList = async () => {
     const docRef = collection(db, "NFT");
     const docSnap = await getDocs(docRef);
     let counter = 0;
-    docSnap.forEach((doc) => {      
+    let temp = [];
+    docSnap.forEach((doc) => {
       const data = {
         id: counter++,
         image: doc.data().NFTUrl,
@@ -57,10 +55,11 @@ function TradeNFT({
         createdAt: Date.now(),
         title: doc.data().name,
         price: doc.data().price,
-        };
-        setNftList((originalNftList) => [...originalNftList, data]);
+      };
+      temp.push(data);
     });
-    console.log("list",originalNftList);
+    setNftList(temp);
+    setoriginalNftList(temp);
   };
 
   return (

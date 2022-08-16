@@ -1,14 +1,14 @@
 import "./styles/home.css";
 import ThumbnailNFT from "../components/ThumbnailNFT";
 import { Link } from "react-router-dom";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import db from "../firebase";
 import { getDocs, collection } from "firebase/firestore";
-import { BsArrowReturnLeft } from 'react-icons/bs';
 
 function Home({ address }) {
-  
-  useEffect(() => {getNFTList()}, []);
+  useEffect(() => {
+    getNFTList();
+  }, []);
 
   const [nftList, setNftList] = useState([]);
 
@@ -17,7 +17,7 @@ function Home({ address }) {
     const docSnap = await getDocs(docRef);
     let counter = 0;
     const saveList = [];
-    docSnap.forEach((doc) => {      
+    docSnap.forEach((doc) => {
       const data = {
         id: counter++,
         image: doc.data().NFTUrl,
@@ -27,8 +27,8 @@ function Home({ address }) {
         createdAt: Date.now(),
         title: doc.data().name,
         price: doc.data().price,
-        };
-        saveList.push(data);          
+      };
+      saveList.push(data);
     });
     //setNftList(saveList.slice(0,2));
     setNftList(saveList.slice(-2));

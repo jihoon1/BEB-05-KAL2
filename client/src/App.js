@@ -1,6 +1,5 @@
 import "./App.css";
 import TradeNFT from "./pages/tradeNFT";
-import InfoNFT from "./pages/infoNFT";
 import Test from "./pages/test";
 import RegistNFT from "./pages/registNFT";
 import Home from "./pages/home";
@@ -18,11 +17,7 @@ function App() {
   const [category, setCategory] = useState("ALL");
   const [address, setAddress] = useState("");
 
-  useEffect(() => {
-    return console.log(
-      `category : ${category}\nminPrice : ${minPrice}\nmaxPrice : ${maxPrice}`
-    );
-  });
+  useEffect(() => {});
 
   return (
     <div>
