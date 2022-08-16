@@ -29,7 +29,7 @@ function RegistNFT({ address }) {
   console.log("addr", address);
   if (address === undefined)
     address = "0xbcC230bEC953aF066d730F5325F0f5EE21Cb8911";
-
+  const myAddr = address;
   const [imageSrc, setImageSrc] = useState("");
   const [dataObj, setInput] = useState({
     NFTFile: "",
@@ -227,12 +227,17 @@ function RegistNFT({ address }) {
               {/* <div className="contents1"><p/>Collection<div className="lbox6"><input type="text" id="select" className="input1"/></div></div> */}
               <div className="contents1">
                 <p />
-                <div className="button" onClick={onSubmit}>
-                  <p className="btnText">Create</p>
-                  {/* <div className="btnTwo">
-                    <p className="btnText2">now</p>
-                  </div> */}
-                </div>
+                {myAddr === undefined || myAddr === "" ? (
+                  <h>
+                    지갑 주소가 없어 등록이 불가합니다. 로그인 후 다시
+                    시도하세요.
+                  </h>
+                ) : (
+                  <div className="button" onClick={onSubmit}>
+                    <p className="btnText">Create</p>
+                  </div>
+                )}
+                <button onClick={() => reset()}>작성글 리셋</button>
               </div>
             </div>
           </div>

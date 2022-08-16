@@ -16,6 +16,7 @@ function Home({ address }) {
     const docRef = collection(db, "NFT");
     const docSnap = await getDocs(docRef);
     let counter = 0;
+    const saveList = [];
     docSnap.forEach((doc) => {
       const data = {
         id: counter++,
@@ -27,12 +28,10 @@ function Home({ address }) {
         title: doc.data().name,
         price: doc.data().price,
       };
-
-      if (counter > 2) return; //2개만 처리함
-
-      setNftList((nftList) => [...nftList, data]);
+      saveList.push(data);
     });
-    console.log("list", nftList);
+    //setNftList(saveList.slice(0,2));
+    setNftList(saveList.slice(-2));
   };
 
   return (
