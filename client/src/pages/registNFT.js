@@ -6,7 +6,6 @@ import db from "../firebase";
 import { doc, setDoc } from "firebase/firestore";
 
 const categories = [
-  "ALL",
   "illustration",
   "Art",
   "Domain Names",
@@ -97,7 +96,6 @@ function RegistNFT() {
   return (
     <div>
       <div className="wrapper">
-        <SideMenu />
         <div className="article">
           <h1>Regist NFT</h1>
           <div className="contents">
@@ -139,7 +137,7 @@ function RegistNFT() {
                           name="category"
                           className="category--check"
                           onChange={onChange}
-                          value={idx}
+                          value={e}
                         />
                         <label>{e}</label>
                       </div>

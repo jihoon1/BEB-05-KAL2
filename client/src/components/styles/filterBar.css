@@ -1,7 +1,7 @@
 .filterBar {
   display: flex;
   width: 92%;
-  height: 5%;
+  height: 65px;
   align-items: center;
   justify-content: space-between;
 }

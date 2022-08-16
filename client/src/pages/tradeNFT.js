@@ -13,7 +13,7 @@ const dummyData = [
     userName: "HongGilDong",
     createdAt: Date.now(),
     title: "test",
-    price: `0.5`,
+    price: 0.5,
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const dummyData = [
     userName: "HongGilDong",
     createdAt: Date.now(),
     title: "test",
-    price: `0.5`,
+    price: 0.5,
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ const dummyData = [
     userName: "HongGilDong",
     createdAt: Date.now(),
     title: "test",
-    price: `0.5`,
+    price: 0.5,
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ const dummyData = [
     userName: "HongGilDong",
     createdAt: Date.now(),
     title: "test",
-    price: `0.5`,
+    price: 0.5,
   },
   {
     id: 5,
@@ -53,7 +53,7 @@ const dummyData = [
     userName: "HongGilDong",
     createdAt: Date.now(),
     title: "test",
-    price: `0.5`,
+    price: 0.5,
   },
   {
     id: 6,
@@ -63,16 +63,17 @@ const dummyData = [
     userName: "HongGilDong",
     createdAt: Date.now(),
     title: "test",
-    price: `0.5`,
+    price: 0.5,
   },
   {
     id: 7,
     img: null,
     category: "collectible",
     profileImg: null,
-    username: "Kim",
+    userName: "HongGilDong",
+    createdAt: Date.now(),
     title: "test",
-    price: `0.5`,
+    price: 0.5,
   },
 ];
 function TradeNFT({
@@ -85,22 +86,15 @@ function TradeNFT({
   setMaxPrice,
   setStatus,
 }) {
-  useEffect(() => {
-    filtering();
-  });
-  const originalNftList = dummyData.map((e) => e);
+  useEffect(() => {});
 
-  const [nftList, setNftList] = useState(dummyData);
+  const [page, setPage] = useState(1);
+  const originalNftList = dummyData.map((e) => e).slice(0, 6 * page);
 
-  const filtering = () => {
-    if (category == "ALL") {
-      setNftList(originalNftList);
-    } else {
-      const tempArr = originalNftList.filter((e) => {
-        return e.category == category;
-      });
-      setNftList(tempArr);
-    }
+  const paging = () => {
+    setPage(page + 1);
+    console.log(page);
+    console.log(originalNftList);
   };
   return (
     <div>
@@ -113,11 +107,31 @@ function TradeNFT({
           setStatus={setStatus}
         />
         <div className="article">
-          <FilterBar listCount={nftList.length} />
+          <FilterBar listCount={originalNftList.length} />
           <div className="contents">
-            {nftList.map((e, idx) => {
-              return <ThumbnailNFT data={e} key={idx} />;
+            {originalNftList.map((e, idx) => {
+              if (category === "ALL") {
+                return <ThumbnailNFT data={e} key={idx} />;
+              } else if (
+                e.category === category &&
+                e.price <= maxPrice &&
+                e.price >= minPrice
+              ) {
+                return <ThumbnailNFT data={e} key={idx} />;
+              } else {
+                return;
+              }
             })}
+          </div>
+          <div className="viewMore--wrapper">
+            <button
+              className="viewMore"
+              onClick={() => {
+                return paging();
+              }}
+            >
+              view more
+            </button>
           </div>
         </div>
       </div>

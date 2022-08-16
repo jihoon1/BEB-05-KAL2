@@ -18,7 +18,11 @@ function App() {
   const [category, setCategory] = useState("ALL");
   const [address, setAddress] = useState("");
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    return console.log(
+      `category : ${category}\nminPrice : ${minPrice}\nmaxPrice : ${maxPrice}`
+    );
+  });
 
   return (
     <div>
