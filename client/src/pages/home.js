@@ -1,28 +1,40 @@
 import "./styles/home.css";
 import ThumbnailNFT from "../components/ThumbnailNFT";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useState,useEffect } from "react";
+import db from "../firebase";
+import { getDocs, collection } from "firebase/firestore";
+import { BsArrowReturnLeft } from 'react-icons/bs';
 
-const card = [
-  {
-    id: 1,
-    userName: "cat",
-    category: "Airplane",
-    title: "KAL2",
-    price: "999 ETH",
-    img: "",
-  },
-  {
-    id: 2,
-    userName: "dog",
-    category: "Art",
-    title: "CodeStates",
-    price: "999 ETH",
-    img: "",
-  },
-];
 function Home({ address }) {
-  useEffect(() => {}, []);
+  
+  useEffect(() => {getNFTList()}, []);
+
+  const [nftList, setNftList] = useState([]);
+
+  const getNFTList = async () => {
+    const docRef = collection(db, "NFT");
+    const docSnap = await getDocs(docRef);
+    let counter = 0;
+    docSnap.forEach((doc) => {      
+      const data = {
+        id: counter++,
+        image: doc.data().NFTUrl,
+        category: doc.data().category,
+        desc: doc.data().description,
+        userName: doc.data().name,
+        createdAt: Date.now(),
+        title: doc.data().name,
+        price: doc.data().price,
+        };
+
+        if(counter > 2) return; //2개만 처리함
+          
+        setNftList((nftList) => [...nftList, data]);          
+    });
+    console.log("list",nftList);
+  };
+
   return (
     <>
       <div className="home--container--wrapper">
@@ -44,7 +56,7 @@ function Home({ address }) {
             </div>
           </div>
           <div className="container--main--wrapper--right">
-            {card.map((e, idx) => {
+            {nftList.map((e, idx) => {
               return <ThumbnailNFT data={e} key={idx} />;
             })}
           </div>
@@ -54,10 +66,10 @@ function Home({ address }) {
         <div className="container--liveAuction">
           <div className="container--liveAuction--title">Live Auctions</div>
           <div className="container--liveAuction--cards">
-            {card.map((e, idx) => {
+            {nftList.map((e, idx) => {
               return <ThumbnailNFT data={e} key={idx} />;
             })}
-            {card.map((e, idx) => {
+            {nftList.map((e, idx) => {
               return <ThumbnailNFT data={e} key={idx} />;
             })}
           </div>
