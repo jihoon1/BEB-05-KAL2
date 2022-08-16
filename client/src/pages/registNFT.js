@@ -4,6 +4,8 @@ import SideMenu from "../components/SideMenu";
 import { pinataUpload, pinataUploadJSON } from "../ipfs";
 import db from "../firebase";
 import { doc, setDoc } from "firebase/firestore";
+import erc721Abi from "../contracts/abi";
+const { LazyMinter } = require("../contracts/NFTMint");
 
 const categories = [
   "illustration",
@@ -23,6 +25,11 @@ function RegistNFT() {
     SellPrice: "",
     Category: "",
     Status: "",
+  });
+
+  const contract = new LazyMinter({
+    contractAddress: "0xd3762CF23BEB04fa535fFa05812fb1B674A12D72",
+    signer: "0xbcC230bEC953aF066d730F5325F0f5EE21Cb8911",
   });
 
   const onChange = (e) => {
@@ -68,6 +75,8 @@ function RegistNFT() {
       ),
       docData
     );
+
+    await setDoc(doc(db, "NFT", upLoadIPFSMetaDataHash), docData);
   };
 
   const onLoadFile = (e) => {
@@ -87,6 +96,8 @@ function RegistNFT() {
       dataObj.SellPrice
     ) {
       createMetaData();
+      //createVoucher 첫번 째 인자에 NFT 배열 데이터의 길이가 필요할 듯,
+      contract.createVoucher("tokenId", dataObj.ExLink, dataObj.SellPrice);
     } else {
       if (dataObj.NFTFile) console.log("Please fill all the fields");
       else console.log("Please upload a file");
