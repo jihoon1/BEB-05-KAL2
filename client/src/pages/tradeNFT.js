@@ -76,7 +76,7 @@ function TradeNFT({
           <FilterBar listCount={nftList.length} />
           <div className="contents">
             {nftList.map((e, idx) => {
-              return <ThumbnailNFT data={e} key={idx} />;
+              return <ThumbnailNFT data={e} key={idx} isBuy={true}/>;
             })}
           </div>
         </div>

@@ -2,7 +2,8 @@ import "./styles/tumbnailNFT.css";
 import React from "react";
 import defaultNFT from "../assets/default-NFT.png";
 
-function ThumbnailNFT({ data }) {
+function ThumbnailNFT({ data, isBuy =false }) {
+  console.log('--------',isBuy);
   return (
     <div className="NFT--card">
       <div className="limit">
@@ -19,6 +20,7 @@ function ThumbnailNFT({ data }) {
           </div>
           <div className="NFT--title">{data.title}</div>
           <div className="NFT--price">{data.price} ETH</div>
+          {(isBuy)?<div className="NFT--buy"><button onClick={() => {}}>구매</button></div>:null}
         </div>
       </div>
     </div>

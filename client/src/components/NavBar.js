@@ -18,14 +18,14 @@ function NavBar() {
         🛩 KAL2
       </Link>
       <div className="navBar--search--wrapper">
-        <input
+        {/* <input
           type="text"
           size="50"
           placeholder="Search items"
           className="navBar--search--input"
-        />
+        /> */}
         <div className="search--icon">
-          <AiOutlineSearch />
+          {/* <AiOutlineSearch /> */}
         </div>
       </div>
       <nav className="navBar--link--wrapper" ref={navRef}>
